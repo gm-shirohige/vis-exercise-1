@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 1: Scatterplot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Exercise 1: Scatterplot</h1>
+
+    <h2>Drawing a Scatterplot with HTML Canvas</h2>
+    <div>
+        <p>However, a table does not suffice to visualize attributes of all data items at once. Instead we can use
+            techniques to visually encode a subset of attributes. A scatterplot is such a visualization technique that
+            encodes two quantitative attributes as the position of a circle.</p>
+
+        <p>The code snippet below creates an HTML canvas and iterates over all items from the movies dataset to draw a
+            circle. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">here</a>
+            for a documentation and further reading on the HTML canvas. Right now, the functions for mapping data values
+            to a position on the canvas are not implemented. As a consequence, most of the circles are drawn outside of
+            the canvas area.</p>
+
+        <h3>Tasks</h3>
+        <p>Complete the following tasks using only the given code and HTML canvas. Although <em>d3</em> is available, do
+            <b>not</b> use it for these tasks.</p>
+        <ol>
+            <li>Draw the circles at the correct positions. Use the width and height of the canvas and the data domains
+                <code>domainX</code> and <code>domainY</code>. Add a margin such that all circles are fully visible.
+            </li>
+            <li>Since the dataset is relatively large, there is a lot of <em>overdraw</em> in the plot. Think of a way
+                to mitigate this issue by changing the appearance of the circles but without changing the positions.
+            </li>
+            <li>A <a href="https://en.wikipedia.org/wiki/Bubble_chart">bubbleplot</a> is a scatterplot
+                that encodes another attribute in the size of the circles. Encode the attribute <em>rating</em> using
+                the size
+                of your circles. Think carefully about what size means here!</li>
+            <li>The dataset contains a lot of English movies but fewer movies in other languages. Encode the language
+                using the color of the circles to distinguish English movies from those in other languages.</li>
+        </ol>
+    </div>
+    <div id="scatterplot-canvas"></div>
+
+    <h2>Drawing a Scatterplot with d3</h2>
+    <p>Your scatterplot already shows the distribution of the data values with respect to the data domain. However,
+        without any labels it is very hard to actually derive individual values from it. <a
+            href="https://d3js.org/">d3</a> is a JavaScript library &quot;for manipulating documents based on
+        data&quot;. It provides a lot of functionality for creating interactive visualizations for the web.</p>
+    <p>Have a look at the <a href="https://observablehq.com/@d3/learn-d3">d3 introduction</a> to understand its
+        principles. Most importantly, d3 does not really create visualizations by itself but allows you to bind data to
+        elements in the DOM and set their attributes based on that data. While d3 can also use the canvas, it is mainly
+        used together with <em>Scalable Vector Graphics</em> (SVG). Make sure to have a basic understanding of how SVG
+        works (e.g. by reading <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">this documentation</a>).</p>
+    <p>In our example the data is the array of movies. Every individual movie is tied to a circle and we want to set its
+        2d position based on the corresponding attribute values. d3 provides scales that help with the mapping from data
+        values to visual attributes. What you did by hand for your canvas-based scatterplot can be achieved more easily
+        by using these scales. The code below sets up one scale for each axis that map from the data domain to a
+        position in the plot.</p>
+    <h3>Task</h3>
+    <p>The given scales are already used to create an axis per attribute. Use d3 to add the circles representing each
+        movie in the dataset with SVG. Make sure not to blindly copy code from somewhere else but to understand what is
+        actually happening. Feel free to play around with the visual appearance of your scatter points by setting SVG
+        attributes.</p>
+    <div id="scatterplot-d3"></div>
+
+    <script src="d3.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
