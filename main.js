@@ -38,7 +38,7 @@ function drawCanvasScatterplot() {
         context.fillStyle = backgroundColor;
         context.fillRect(
             margin.left,
-            margin.right,
+            margin.top,
             width - margin.left - margin.right,
             height - margin.top - margin.bottom
         );
